@@ -99,7 +99,7 @@ class fankuis():
             a = np.frombuffer(data, dtype=MyType)
             if hex((a['test_value'][0])) == '0x123456789abcdef':
                 tool_v = a['tool_vector_actual'][0]
-                tool_j = a['q_target'][0]
+                tool_j = a['q_actual'][0]
             return [tool_v,tool_j]
         except:
             return ["NG"]
