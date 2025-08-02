@@ -117,7 +117,7 @@ class PublisherNode(Node):
         self.IP = str(os.getenv("IP_address"))
         self.connect()
         self.pub = self.create_publisher(ToolVectorActual, "dobot_msgs_v3/msg/ToolVectorActual", 10)   # 创建发布者对象（消息类型、话题名、队列长度）
-        self.pub2 = self.create_publisher(JointState, "joint_states_robot", 10) 
+        self.pub2 = self.create_publisher(JointState, "joint_states", 10)   # poi controlla qui per joint states robot
         self.timer = self.create_timer(0.01, self.timer_callback)  # 创建一个定时器（单位为秒的周期，定时执行的回调函数）
     def connect(self):
         try:
@@ -131,6 +131,7 @@ class PublisherNode(Node):
         actual = self.feed_v.feed()
         msg2 = JointState()
         if actual[0]!= "NG" :                                     
+           msg2.header.stamp = self.get_clock().now().to_msg()  # OBBLIGATORIO per RViz
            msg2.name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
            q_target = actual[1]
            joint_a = []

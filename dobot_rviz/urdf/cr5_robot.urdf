@@ -261,4 +261,33 @@
     <limit lower="-6.28" upper="6.28" effort="0" velocity="0" />
   </joint>
 
+  <joint name="zed" type="fixed">
+    <parent link="Link6"/>
+    <child link="zed"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="zed">
+    <visual>
+      <origin xyz="0 -0.02 0.03" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.12 0.12 0.05"/> <!-- Larghezza, altezza, profondità 0.2 0.12 0.0 -->
+      </geometry>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.02 0.03" rpy="0 0 0"/> <!-- rpy = rotazione roll, pitch raw in radianti -->
+      <geometry>
+        <box size="0.12 0.10 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2"/> <!-- in kg -->
+      <origin xyz="0 0 0.03" rpy="0 0 0"/>
+      <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/> <!-- calcola dopo l'inerzia -->
+    </inertial>
+  </link>
+
 </robot>

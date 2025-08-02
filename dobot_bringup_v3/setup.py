@@ -13,7 +13,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.launch.py'))),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools', 'rosbridge-suite'],
     zip_safe=True,
     maintainer='dobot',
     maintainer_email='dobot@todo.todo',
@@ -24,7 +24,9 @@ setup(
         'console_scripts': [
             'dobot_bringup  = dobot_bringup_v3.dobot_bringup:main',
             'feedback  = dobot_bringup_v3.feedback:main',
-           
+            'joint_states_bridge = dobot_bringup_v3.joint_states_bridge:main',
+            'translater_node = dobot_bringup_v3.translater:main',
+            'listener_node = dobot_bringup_v3.zed_listener:main',
         ],
     },
 )
